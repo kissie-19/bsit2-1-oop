@@ -13,8 +13,7 @@ public class BankAccount {
         this.accountHolderName = accountHolderName;
         this.balance = initialBalance;
         totalAccounts++;
-        System.out.println("Account Created: " + accountNumber + " for " + accountHolderName +
-                " with initial balance: $" + initialBalance);
+        System.out.println("Account Created: " + accountNumber + " for " + accountHolderName + " with initial balance: $" + initialBalance);
     }
 
 
@@ -25,8 +24,7 @@ public class BankAccount {
 
     void deposit(double amount) {
         balance += amount;
-        System.out.println(accountHolderName + " deposited $" + amount +
-                ". New balance: $" + balance);
+        System.out.println(accountHolderName + " deposited $" + amount + ". New balance: $" + balance);
     }
 
 
