@@ -1,30 +1,36 @@
 public class Main {
     public static void main(String[] args) {
-        PetService service = new PetService();
 
+        PetService services = new PetService();
+        System.out.println("Basic checkup: $" + services.calculateFee());
+        System.out.println("Checkup with vaccination: $" + services.calculateFee(true));
+        System.out.println("Full service: $" + services.calculateFee(true, true));
+        System.out.println("Emergency: $" + services.calculateFee("Trauma"));
+        System.out.println("\n");
 
-        System.out.println("---- Pet Service Fees ----");
-        System.out.println("Basic Checkup: $" + service.calculateFee());
-        System.out.println("Checkup with Vaccination: $" + service.calculateFee(true));
-        System.out.println("Full Service (Vaccination + Grooming): $" + service.calculateFee(true, true));
-        System.out.println("Emergency Service: $" + service.calculateFee("emergency"));
+        System.out.println("Welcome to the Pet Clinic!");
+        System.out.println("============================");
 
-        System.out.println("\n---- Welcome to Pet Clinic! ----");
-        Pet dog = new Dog("Buddy", 3);
-        Pet cat = new Cat("Whiskers", 2);
-        Pet bird = new Bird("Tweety", 1);
+        Pet[] pets = {
+                new Dog("Buddy", 3),
+                new Cat("Whiskers", 2),
+                new Bird("Tweety", 1)
+        };
 
-        dog.displayInfo();
-        cat.displayInfo();
-        bird.displayInfo();
+        for (Pet pet : pets) {
+            pet.displayInfo();
+            pet.makeSound();
+            if(pet != pets[pets.length - 1]) System.out.println();
+        }
+        System.out.println("\n");
 
-        System.out.println("\n---- Training Session Started ----");
-        trainPet((Trainable) dog);
-        trainPet((Trainable) bird);
-    }
+        System.out.println("Training Session Started!");
+        System.out.println("======================");
 
-
-    public static void trainPet(Trainable pet) {
-        pet.performTrick();
+        for (Pet pet : pets) {
+            if (pet instanceof Trainable) {
+                ((Trainable) pet).performTrick();
+            }
+        }
     }
 }
